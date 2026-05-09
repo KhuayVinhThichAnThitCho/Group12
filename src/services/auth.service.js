@@ -1,4 +1,5 @@
 const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
 const User = require("../models/user.model");
 const { sendOTPMail } = require("../utils/mail.util");
 
@@ -66,4 +67,40 @@ const verifyOtp = async ({ email, otp }) => {
   });
 };
 
-module.exports = { register, verifyOtp };
+const login = async ({ email, password }) => {
+  const user = await User.findOne({ where: { email } });
+
+  if (!user) {
+    const error = new Error("Email hoac mat khau khong dung.");
+    error.status = 401;
+    throw error;
+  }
+
+  if (!user.isVerified) {
+    const error = new Error("Tai khoan chua xac thuc OTP. Vui long kiem tra email.");
+    error.status = 403;
+    throw error;
+  }
+
+  const isMatch = await bcrypt.compare(password, user.password);
+  if (!isMatch) {
+    const error = new Error("Email hoac mat khau khong dung.");
+    error.status = 401;
+    throw error;
+  }
+
+  const payload = {
+    userId: user.id,
+    role: user.role,
+  };
+
+  const token = jwt.sign(payload, process.env.JWT_SECRET, {
+    expiresIn: process.env.JWT_EXPIRES_IN || "1h",
+  });
+
+  const redirectUrl = user.role === "admin" ? "/admin/profile" : "/user/profile";
+
+  return { token, redirectUrl };
+};
+
+module.exports = { register, verifyOtp, login };
