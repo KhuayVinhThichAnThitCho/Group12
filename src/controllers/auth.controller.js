@@ -24,4 +24,18 @@ const verifyOtp = async (req, res) => {
   }
 };
 
-module.exports = { register, verifyOtp };
+const login = async (req, res) => {
+  try {
+    const { email, password } = req.body;
+    const { token, redirectUrl } = await authService.login({ email, password });
+    return res.status(200).json({
+      message: "Dang nhap thanh cong!",
+      token,
+      redirectUrl,
+    });
+  } catch (error) {
+    return res.status(error.status || 500).json({ message: error.message });
+  }
+};
+
+module.exports = { register, verifyOtp, login };
