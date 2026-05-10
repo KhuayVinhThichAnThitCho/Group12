@@ -38,6 +38,40 @@ const login = async (req, res) => {
   }
 };
 
+const verifyOtp = async (req, res) => {
+  try {
+    const result = await authService.verifyOtp(req.body);
+
+    return res.status(200).json({
+      success: true,
+      message: "Kích hoạt tài khoản thành công!",
+      data: result,
+    });
+  } catch (error) {
+    return res.status(400).json({
+      success: false,
+      message: error.message,
+    });
+  }
+};
+
+const login = async (req, res) => {
+  try {
+    const result = await authService.login(req.body);
+
+    return res.status(200).json({
+      success: true,
+      message: "Đăng nhập thành công!",
+      data: result,
+    });
+  } catch (error) {
+    return res.status(400).json({
+      success: false,
+      message: error.message,
+    });
+  }
+};
+
 const forgotPassword = async (req, res) => {
   try {
     const result = await authService.forgotPassword(req.body);

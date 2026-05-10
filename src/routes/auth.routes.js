@@ -6,6 +6,25 @@ const { registerLimiter, verifyOtpLimiter, loginLimiter, forgotPasswordLimiter }
 const { registerRules, verifyOtpRules, loginRules, forgotPasswordValidation, resetPasswordValidation, editProfileValidation, validate } = require("../middlewares/validate.middleware");
 const { authMiddleware } = require("../middlewares/auth.middleware");
 
+const {
+  registerLimiter,
+  verifyOtpLimiter,
+  loginLimiter,
+  forgotPasswordLimiter,
+} = require("../middlewares/rateLimit.middleware");
+
+const {
+  registerRules,
+  verifyOtpRules,
+  loginRules,
+  forgotPasswordValidation,
+  resetPasswordValidation,
+  editProfileValidation,
+  validate,
+} = require("../middlewares/validate.middleware");
+
+const { authMiddleware } = require("../middlewares/auth.middleware");
+
 router.post(
   "/register",
   registerLimiter,

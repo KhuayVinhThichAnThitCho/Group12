@@ -1,7 +1,11 @@
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const User = require("../models/user.model");
-const { sendOTPMail, sendForgotPasswordOTPEmail } = require("../utils/mail.util");
+
+const {
+  sendOTPEmail,
+  sendForgotPasswordOTPEmail,
+} = require("../utils/mail.util");
 
 const generateOTP = () => {
   return Math.floor(100000 + Math.random() * 900000).toString();
@@ -103,8 +107,84 @@ const login = async ({ email, password }) => {
   return { token, redirectUrl };
 };
 
+const verifyOtp = async ({ email, otp }) => {
+  const user = await User.findOne({
+    where: { email },
+  });
+
+  if (!user) {
+    throw new Error("Email không tồn tại");
+  }
+
+  if (user.isVerified) {
+    throw new Error("Tài khoản đã được kích hoạt");
+  }
+
+  if (user.otpCode !== otp) {
+    throw new Error("OTP không chính xác");
+  }
+
+  if (!user.otpExpires || user.otpExpires < new Date()) {
+    throw new Error("OTP đã hết hạn");
+  }
+
+  user.isVerified = true;
+  user.otpCode = null;
+  user.otpExpires = null;
+
+  await user.save();
+
+  return {
+    message: "Kích hoạt tài khoản thành công",
+  };
+};
+
+const login = async ({ email, password }) => {
+  const user = await User.findOne({
+    where: { email },
+  });
+
+  if (!user) {
+    throw new Error("Email hoặc mật khẩu không đúng");
+  }
+
+  if (!user.isVerified) {
+    throw new Error("Tài khoản chưa xác thực OTP");
+  }
+
+  const isMatch = await bcrypt.compare(password, user.password);
+
+  if (!isMatch) {
+    throw new Error("Email hoặc mật khẩu không đúng");
+  }
+
+  const token = jwt.sign(
+    {
+      id: user.id,
+      role: user.role,
+    },
+    process.env.JWT_SECRET,
+    {
+      expiresIn: process.env.JWT_EXPIRES_IN || "1h",
+    }
+  );
+
+  const redirectUrl =
+    user.role === "admin"
+      ? "/admin/profile"
+      : "/user/profile";
+
+  return {
+    token,
+    redirectUrl,
+    role: user.role,
+  };
+};
+
 const forgotPassword = async ({ email }) => {
-  const user = await User.findOne({ where: { email } });
+  const user = await User.findOne({
+    where: { email },
+  });
 
   if (!user) {
     throw new Error("Email không tồn tại");
@@ -115,6 +195,7 @@ const forgotPassword = async ({ email }) => {
 
   user.otpCode = otpCode;
   user.otpExpires = otpExpires;
+
   await user.save();
 
   await sendForgotPasswordOTPEmail(email, otpCode);
@@ -125,8 +206,14 @@ const forgotPassword = async ({ email }) => {
   };
 };
 
-const resetPassword = async ({ email, otpCode, newPassword }) => {
-  const user = await User.findOne({ where: { email } });
+const resetPassword = async ({
+  email,
+  otpCode,
+  newPassword,
+}) => {
+  const user = await User.findOne({
+    where: { email },
+  });
 
   if (!user) {
     throw new Error("Email không tồn tại");
@@ -149,7 +236,7 @@ const resetPassword = async ({ email, otpCode, newPassword }) => {
   await user.save();
 
   return {
-    message: "Đặt lại mật khẩu thành công.",
+    message: "Đặt lại mật khẩu thành công",
   };
 };
 
@@ -160,7 +247,12 @@ const editProfile = async (userId, data) => {
     throw new Error("User không tồn tại");
   }
 
-  const allowedFields = ["name", "phone", "address", "avatar"];
+  const allowedFields = [
+    "name",
+    "phone",
+    "address",
+    "avatar",
+  ];
 
   allowedFields.forEach((field) => {
     if (data[field] !== undefined) {
