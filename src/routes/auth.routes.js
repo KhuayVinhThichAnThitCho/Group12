@@ -2,6 +2,9 @@ const express = require("express");
 const router = express.Router();
 
 const authController = require("../controllers/auth.controller");
+const { registerLimiter, verifyOtpLimiter, loginLimiter, forgotPasswordLimiter } = require("../middlewares/rateLimit.middleware");
+const { registerRules, verifyOtpRules, loginRules, forgotPasswordValidation, resetPasswordValidation, editProfileValidation, validate } = require("../middlewares/validate.middleware");
+const { authMiddleware } = require("../middlewares/auth.middleware");
 
 const {
   registerLimiter,
