@@ -34,7 +34,104 @@
           ]
         }
       },
-      "response": []
+      "response": [
+        {
+          "name": "Register",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"name\": \"Duong The Vinh\",\r\n  \"email\": \"dtvinh.a1.20.21@gmail.com\",\r\n  \"password\": \"123456\",\r\n  \"confirmPassword\": \"123456\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/auth/register",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "auth",
+                "register"
+              ]
+            }
+          },
+          "status": "Created",
+          "code": 201,
+          "_postman_previewlanguage": "JSON",
+          "header": [
+            {
+              "key": "X-Powered-By",
+              "value": "Express",
+              "type": "text"
+            },
+            {
+              "key": "Access-Control-Allow-Origin",
+              "value": "*",
+              "type": "text"
+            },
+            {
+              "key": "RateLimit-Policy",
+              "value": "5;w=600",
+              "type": "text"
+            },
+            {
+              "key": "RateLimit-Limit",
+              "value": "5",
+              "type": "text"
+            },
+            {
+              "key": "RateLimit-Remaining",
+              "value": "4",
+              "type": "text"
+            },
+            {
+              "key": "RateLimit-Reset",
+              "value": "600",
+              "type": "text"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json; charset=utf-8",
+              "type": "text"
+            },
+            {
+              "key": "Content-Length",
+              "value": "153",
+              "type": "text"
+            },
+            {
+              "key": "ETag",
+              "value": "W/\"99-AZd7m7ZSZaRSKm2IA76HOKNGrK8\"",
+              "type": "text"
+            },
+            {
+              "key": "Date",
+              "value": "Sun, 10 May 2026 10:57:51 GMT",
+              "type": "text"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive",
+              "type": "text"
+            },
+            {
+              "key": "Keep-Alive",
+              "value": "timeout=5",
+              "type": "text"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"success\": true,\n    \"data\": {\n        \"userId\": 1,\n        \"email\": \"dtvinh.a1.20.21@gmail.com\",\n        \"message\": \"Đăng ký thành công. Vui lòng kiểm tra email để lấy OTP.\"\n    }\n}"
+        }
+      ]
     },
     {
       "name": "verify otp",
@@ -43,7 +140,7 @@
         "header": [],
         "body": {
           "mode": "raw",
-          "raw": "{\r\n  \"email\": \"dtvinh.a1.20.21@gmail.com\",\r\n  \"otp\": \"676984\"\r\n}",
+          "raw": "{\r\n  \"email\": \"dtvinh.a1.20.21@gmail.com\",\r\n  \"otp\": \"695798\"\r\n}",
           "options": {
             "raw": {
               "language": "json"
@@ -64,7 +161,104 @@
           ]
         }
       },
-      "response": []
+      "response": [
+        {
+          "name": "verify otp",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"email\": \"dtvinh.a1.20.21@gmail.com\",\r\n  \"otp\": \"695798\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/auth/verify-otp",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "auth",
+                "verify-otp"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "JSON",
+          "header": [
+            {
+              "key": "X-Powered-By",
+              "value": "Express",
+              "type": "text"
+            },
+            {
+              "key": "Access-Control-Allow-Origin",
+              "value": "*",
+              "type": "text"
+            },
+            {
+              "key": "RateLimit-Policy",
+              "value": "5;w=600",
+              "type": "text"
+            },
+            {
+              "key": "RateLimit-Limit",
+              "value": "5",
+              "type": "text"
+            },
+            {
+              "key": "RateLimit-Remaining",
+              "value": "4",
+              "type": "text"
+            },
+            {
+              "key": "RateLimit-Reset",
+              "value": "600",
+              "type": "text"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json; charset=utf-8",
+              "type": "text"
+            },
+            {
+              "key": "Content-Length",
+              "value": "128",
+              "type": "text"
+            },
+            {
+              "key": "ETag",
+              "value": "W/\"80-4jfVPbpcHKf9a+1C2A8cHGbpv3o\"",
+              "type": "text"
+            },
+            {
+              "key": "Date",
+              "value": "Sun, 10 May 2026 10:59:20 GMT",
+              "type": "text"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive",
+              "type": "text"
+            },
+            {
+              "key": "Keep-Alive",
+              "value": "timeout=5",
+              "type": "text"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"success\": true,\n    \"message\": \"Kích hoạt tài khoản thành công!\",\n    \"data\": {\n        \"message\": \"Kích hoạt tài khoản thành công\"\n    }\n}"
+        }
+      ]
     },
     {
       "name": "login",
@@ -94,7 +288,104 @@
           ]
         }
       },
-      "response": []
+      "response": [
+        {
+          "name": "login",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"email\": \"dtvinh.a1.20.21@gmail.com\",\r\n  \"password\": \"123456\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/auth/login",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "auth",
+                "login"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "JSON",
+          "header": [
+            {
+              "key": "X-Powered-By",
+              "value": "Express",
+              "type": "text"
+            },
+            {
+              "key": "Access-Control-Allow-Origin",
+              "value": "*",
+              "type": "text"
+            },
+            {
+              "key": "RateLimit-Policy",
+              "value": "5;w=900",
+              "type": "text"
+            },
+            {
+              "key": "RateLimit-Limit",
+              "value": "5",
+              "type": "text"
+            },
+            {
+              "key": "RateLimit-Remaining",
+              "value": "4",
+              "type": "text"
+            },
+            {
+              "key": "RateLimit-Reset",
+              "value": "900",
+              "type": "text"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json; charset=utf-8",
+              "type": "text"
+            },
+            {
+              "key": "Content-Length",
+              "value": "276",
+              "type": "text"
+            },
+            {
+              "key": "ETag",
+              "value": "W/\"114-c+iFmgqa80Z34gBy3KnUDPE8lUs\"",
+              "type": "text"
+            },
+            {
+              "key": "Date",
+              "value": "Sun, 10 May 2026 10:59:34 GMT",
+              "type": "text"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive",
+              "type": "text"
+            },
+            {
+              "key": "Keep-Alive",
+              "value": "timeout=5",
+              "type": "text"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"success\": true,\n    \"message\": \"Đăng nhập thành công!\",\n    \"data\": {\n        \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6InVzZXIiLCJpYXQiOjE3Nzg0MTA3NzQsImV4cCI6MTc3ODQxNDM3NH0.7rkI_E3Qmo3MOKltv1P3IJAPTHNkdJjX7WpJnWm_qvo\",\n        \"redirectUrl\": \"/user/profile\",\n        \"role\": \"user\"\n    }\n}"
+        }
+      ]
     },
     {
       "name": "forgot password",
@@ -124,7 +415,99 @@
           ]
         }
       },
-      "response": []
+      "response": [
+        {
+          "name": "forgot password",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"email\": \"dtvinh.a1.20.21@gmail.com\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/auth/forgot-password",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "auth",
+                "forgot-password"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "JSON",
+          "header": [
+            {
+              "key": "X-Powered-By",
+              "value": "Express",
+              "type": "text"
+            },
+            {
+              "key": "Access-Control-Allow-Origin",
+              "value": "*",
+              "type": "text"
+            },
+            {
+              "key": "X-RateLimit-Limit",
+              "value": "3",
+              "type": "text"
+            },
+            {
+              "key": "X-RateLimit-Remaining",
+              "value": "2",
+              "type": "text"
+            },
+            {
+              "key": "Date",
+              "value": "Sun, 10 May 2026 11:00:01 GMT",
+              "type": "text"
+            },
+            {
+              "key": "X-RateLimit-Reset",
+              "value": "1778411702",
+              "type": "text"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json; charset=utf-8",
+              "type": "text"
+            },
+            {
+              "key": "Content-Length",
+              "value": "135",
+              "type": "text"
+            },
+            {
+              "key": "ETag",
+              "value": "W/\"87-sjM8duYZIG5r0KO0S8z3+spd1qc\"",
+              "type": "text"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive",
+              "type": "text"
+            },
+            {
+              "key": "Keep-Alive",
+              "value": "timeout=5",
+              "type": "text"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"success\": true,\n    \"data\": {\n        \"email\": \"dtvinh.a1.20.21@gmail.com\",\n        \"message\": \"OTP đặt lại mật khẩu đã được gửi về email.\"\n    }\n}"
+        }
+      ]
     },
     {
       "name": "reset password",
@@ -246,7 +629,7 @@
         ],
         "body": {
           "mode": "raw",
-          "raw": "{\r\n  \"email\": \"dtvinh.a1.20.21@gmail.com\",\r\n  \"otpCode\": \"338708\",\r\n  \"newPassword\": \"654321\",\r\n  \"confirmPassword\": \"654321\"\r\n}",
+          "raw": "{\r\n  \"email\": \"dtvinh.a1.20.21@gmail.com\",\r\n  \"otpCode\": \"570250\",\r\n  \"newPassword\": \"654321\",\r\n  \"confirmPassword\": \"654321\"\r\n}",
           "options": {
             "raw": {
               "language": "json"
@@ -254,7 +637,7 @@
           }
         },
         "url": {
-          "raw": "http://localhost:8080/api/auth/edit-profile",
+          "raw": "http://localhost:8080/api/auth/reset-password",
           "protocol": "http",
           "host": [
             "localhost"
@@ -263,11 +646,88 @@
           "path": [
             "api",
             "auth",
-            "edit-profile"
+            "reset-password"
           ]
         }
       },
-      "response": []
+      "response": [
+        {
+          "name": "reset password",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"email\": \"dtvinh.a1.20.21@gmail.com\",\r\n  \"otpCode\": \"570250\",\r\n  \"newPassword\": \"654321\",\r\n  \"confirmPassword\": \"654321\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/auth/reset-password",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "auth",
+                "reset-password"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "JSON",
+          "header": [
+            {
+              "key": "X-Powered-By",
+              "value": "Express",
+              "type": "text"
+            },
+            {
+              "key": "Access-Control-Allow-Origin",
+              "value": "*",
+              "type": "text"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json; charset=utf-8",
+              "type": "text"
+            },
+            {
+              "key": "Content-Length",
+              "value": "76",
+              "type": "text"
+            },
+            {
+              "key": "ETag",
+              "value": "W/\"4c-MfO//kCo+cPpfcvBOBxeDTPcF7E\"",
+              "type": "text"
+            },
+            {
+              "key": "Date",
+              "value": "Sun, 10 May 2026 11:01:57 GMT",
+              "type": "text"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive",
+              "type": "text"
+            },
+            {
+              "key": "Keep-Alive",
+              "value": "timeout=5",
+              "type": "text"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"success\": true,\n    \"data\": {\n        \"message\": \"Đặt lại mật khẩu thành công\"\n    }\n}"
+        }
+      ]
     },
     {
       "name": "edit profile",
@@ -416,7 +876,91 @@
           ]
         }
       },
-      "response": []
+      "response": [
+        {
+          "name": "edit profile",
+          "originalRequest": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6InVzZXIiLCJpYXQiOjE3Nzg0MTA3NzQsImV4cCI6MTc3ODQxNDM3NH0.7rkI_E3Qmo3MOKltv1P3IJAPTHNkdJjX7WpJnWm_qvo",
+                "type": "text",
+                "id": 0
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"name\": \"Duong The Vinh Updated\",\r\n  \"phone\": \"0909123456\",\r\n  \"address\": \"TP.HCM\",\r\n  \"avatar\": \"https://example.com/avatar.jpg\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/auth/edit-profile",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "auth",
+                "edit-profile"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "JSON",
+          "header": [
+            {
+              "key": "X-Powered-By",
+              "value": "Express",
+              "type": "text"
+            },
+            {
+              "key": "Access-Control-Allow-Origin",
+              "value": "*",
+              "type": "text"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json; charset=utf-8",
+              "type": "text"
+            },
+            {
+              "key": "Content-Length",
+              "value": "242",
+              "type": "text"
+            },
+            {
+              "key": "ETag",
+              "value": "W/\"f2-9SljItY1bR1J/M9ij0HOYChT9no\"",
+              "type": "text"
+            },
+            {
+              "key": "Date",
+              "value": "Sun, 10 May 2026 11:02:44 GMT",
+              "type": "text"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive",
+              "type": "text"
+            },
+            {
+              "key": "Keep-Alive",
+              "value": "timeout=5",
+              "type": "text"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"success\": true,\n    \"message\": \"Cập nhật profile thành công\",\n    \"data\": {\n        \"id\": 1,\n        \"name\": \"Duong The Vinh Updated\",\n        \"email\": \"dtvinh.a1.20.21@gmail.com\",\n        \"phone\": \"0909123456\",\n        \"address\": \"TP.HCM\",\n        \"avatar\": \"https://example.com/avatar.jpg\",\n        \"role\": \"user\"\n    }\n}"
+        }
+      ]
     }
   ]
 }
