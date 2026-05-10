@@ -2,8 +2,9 @@ const express = require("express");
 const router = express.Router();
 
 const authController = require("../controllers/auth.controller");
-const { registerLimiter, verifyOtpLimiter, loginLimiter } = require("../middlewares/rateLimit.middleware");
-const { registerRules, verifyOtpRules, loginRules, validate } = require("../middlewares/validate.middleware");
+const { registerLimiter, verifyOtpLimiter, loginLimiter, forgotPasswordLimiter } = require("../middlewares/rateLimit.middleware");
+const { registerRules, verifyOtpRules, loginRules, forgotPasswordValidation, resetPasswordValidation, editProfileValidation, validate } = require("../middlewares/validate.middleware");
+const { authMiddleware } = require("../middlewares/auth.middleware");
 
 router.post(
   "/register",
@@ -27,6 +28,26 @@ router.post(
   loginRules,
   validate,
   authController.login
+);
+
+router.post(
+  "/forgot-password",
+  forgotPasswordLimiter,
+  forgotPasswordValidation,
+  authController.forgotPassword
+);
+
+router.post(
+  "/reset-password",
+  resetPasswordValidation,
+  authController.resetPassword
+);
+
+router.put(
+  "/edit-profile",
+  authMiddleware,
+  editProfileValidation,
+  authController.editProfile
 );
 
 module.exports = router;

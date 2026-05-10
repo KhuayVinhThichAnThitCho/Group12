@@ -26,4 +26,21 @@ const sendOTPMail = async (toEmail, otpCode) => {
   });
 };
 
-module.exports = { sendOTPMail };
+const sendForgotPasswordOTPEmail = async (email, otp) => {
+  await transporter.sendMail({
+    from: process.env.MAIL_USER,
+    to: email,
+    subject: "Mã OTP đặt lại mật khẩu",
+    html: `
+      <h3>Đặt lại mật khẩu</h3>
+      <p>Mã OTP của bạn là:</p>
+      <h2>${otp}</h2>
+      <p>Mã này sẽ hết hạn sau 5 phút.</p>
+    `,
+  });
+};
+
+module.exports = {
+  sendOTPMail,
+  sendForgotPasswordOTPEmail,
+};
